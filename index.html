@@ -45,5 +45,23 @@
     </div>
     
     <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/2024_Spotify_logo_without_text.svg/500px-2024_Spotify_logo_without_text.svg.png" alt="Spotfy" class="logo">
+    <script>
+        // Seleciona todos os players de áudio
+        const audios = document.querySelectorAll("audio");
+
+        audios.forEach(audio => {
+            audio.addEventListener("play", () => {
+                // pausa todos os outros quando um começa a tocar
+                audios.forEach(otherAudio => {
+                    if (otherAudio !== audio) {
+                        otherAudio.pause();
+                        otherAudio.currentTime = 0; // opcional: reinicia do começo
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
+
 </html>
